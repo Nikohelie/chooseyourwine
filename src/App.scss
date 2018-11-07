@@ -1,0 +1,57 @@
+.App header {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+}
+.checkbox-container{
+  background-color: #FAFAFA;
+  display: inline-block;
+  width: 20%;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.checkbox-container > label{
+  display: block;
+}
+
+.filter-container{
+  background-color: #FAFAFA;
+  padding-left: 10px;
+  padding-bottom: 5px;
+
+}
+
+.filter-container-none{
+  display: none;
+}
+
+.filters-banner{
+  min-height: 35px;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+
+button.filter-button {
+  display: inline-block;
+  padding: 0.2em 1.3em;
+  margin: 10px;
+  border: 0.15em solid lightgrey;
+  font-size: 16px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #606060;
+  background-color: lightgrey;
+  text-align: center;
+  cursor: pointer;
+}
+
+button:focus {outline:0;}
+
+.lbl{
+  padding-top: 5px;
+}
+
+
+

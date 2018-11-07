@@ -1,0 +1,24 @@
+.AppBar {
+  color: #606060;
+  font-size: 35px;
+  min-height: 120px;
+  background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  font-family: 'Calligraffitti', cursive;
+  }
+  
+  .AppBar-logo {
+    max-height: 100px;
+  }
+
+  span{
+      width: 100%;
+      text-align: center;
+  }
+
+  .headerTitle {
+    margin-right: 100px;
+  }
+  
+  
