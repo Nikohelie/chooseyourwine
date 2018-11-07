@@ -10,7 +10,7 @@ export const WINE_ACTIONS = {
 export const getAllWinesAction = () => (
   (dispatch) => {
     WineApi.getAllWines().then((wines) => {
-      console.log(wines);
+     // console.log(wines);
       dispatch({
         type: WINE_ACTIONS.STORE_WINE,
         wines

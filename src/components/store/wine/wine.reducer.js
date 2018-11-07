@@ -16,7 +16,7 @@ function wineReducer(state = defaultWineState, action) {
         ...state,
         selectedFilter: newSelectedCheckFilter,
         selectedWines: state.wines.filter(item =>{
-          console.log("ITEM _________",item)
+          //console.log("ITEM _________",item)
           if(newSelectedCheckFilter.includes(item.price_range) || newSelectedCheckFilter.length===0){
             return true;
           }else{

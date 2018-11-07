@@ -5,9 +5,9 @@ import {checkFilter, unCheckFilter } from '../store/wine/wine.actions';
 
 const checkboxesCategorie= [
     "Prix_doux",
-    "Belles découvertes",
-    "Valeurs sûres",
-    "Vins d'exceptions"
+    "Belles_découvertes",
+    "Valeurs_sûres",
+    "Vins_d-exception"
   ]
 
 class CheckboxContainerCategorie extends Component{
