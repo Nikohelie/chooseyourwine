@@ -1,6 +1,7 @@
 const defaultWineState = {
     wines: [],
-    selectedWines: []
+    selectedWines: [],
+    selectedFilter:[]
   }
   
   export default defaultWineState

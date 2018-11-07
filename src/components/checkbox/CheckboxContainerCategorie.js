@@ -1,8 +1,10 @@
 import React, { Component }from 'react';
+import { connect } from 'react-redux';
 import Checkbox from './Checkbox';
+import {checkFilter, unCheckFilter } from '../store/wine/wine.actions';
 
 const checkboxesCategorie= [
-    "Prix doux",
+    "Prix_doux",
     "Belles découvertes",
     "Valeurs sûres",
     "Vins d'exceptions"
@@ -14,31 +16,33 @@ class CheckboxContainerCategorie extends Component{
         this.selectedCheckboxes = new Set();
     }
 
-    toggleCheckbox = label => {
+    toggleCheckbox = (label, isChecked) => {
         console.log(label);
-        if (this.selectedCheckboxes.has(label)) {
-          this.selectedCheckboxes.delete(label.name);
-        } else {
-          this.selectedCheckboxes.add(label.name);
-        }
+        console.log(isChecked);
+            if(isChecked){
+                this.props.unCheckFilter(label);
+            }else{
+                this.props.checkFilter(label);
+            }
       }
 
-      createCheckbox = label => (
+      createCheckbox = (label,isChecked) => (
         <Checkbox
                 label={label}
                 handleCheckboxChange={this.toggleCheckbox}
+                isChecked={isChecked}
                 key={label}
             />
       )
     
       createCheckboxes = () => (
-        checkboxesCategorie.map(this.createCheckbox)
+        checkboxesCategorie.map(item =>{
+            return this.createCheckbox(item, this.props.selectedFilter.includes(item))
+        })
       )
 
     render(){
-        
         return(
-            
             <div className="checkbox-container">
             Catégorie
             {this.createCheckboxes()}
@@ -47,5 +51,11 @@ class CheckboxContainerCategorie extends Component{
     }
 }
 
-export default CheckboxContainerCategorie;
+const mapStateToProps = (state) =>(
+    {selectedFilter: state.wineReducer.selectedFilter}
+)
+
+const mapDispatchToProps = {checkFilter, unCheckFilter }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckboxContainerCategorie);
 
