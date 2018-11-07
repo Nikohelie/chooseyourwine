@@ -1,49 +1,51 @@
 import React, { Component }from 'react';
-import { connect } from 'react-redux';
-import categorieCheckbox from './CategorieCheckbox';
 import Checkbox from './Checkbox';
 
+const checkboxesCategorie= [
+    "Prix doux",
+    "Belles découvertes",
+    "Valeurs sûres",
+    "Vins d'exceptions"
+  ]
+
 class CheckboxContainerCategorie extends Component{
-    constructor(props){
-        super(props);
 
-        this.state ={
-            checkedItems: new Map(),
-            title:"Catégorie"
+    componentWillMount = () => {
+        this.selectedCheckboxes = new Set();
+    }
+
+    toggleCheckbox = label => {
+        console.log(label);
+        if (this.selectedCheckboxes.has(label)) {
+          this.selectedCheckboxes.delete(label.name);
+        } else {
+          this.selectedCheckboxes.add(label.name);
         }
-        this.handleChange = this.handleChange.bind(this);
-    }
+      }
 
-    handleChange = (event) =>{
-        event.preventDefault();
-        const item = event.target.name;
-        const isChecked = event.target.checked;
-        this.setState(prevState =>({
-            checkedItems:prevState.checkedItems.set(item,isChecked)
-        }));
-    }
+      createCheckbox = label => (
+        <Checkbox
+                label={label}
+                handleCheckboxChange={this.toggleCheckbox}
+                key={label}
+            />
+      )
+    
+      createCheckboxes = () => (
+        checkboxesCategorie.map(this.createCheckbox)
+      )
+
     render(){
         
         return(
             
             <div className="checkbox-container">
-                {this.state.title}
-              {
-                  categorieCheckbox.map(item =>(
-                      <label className="lbl" key={item.key}>
-                      <Checkbox 
-                        name={item.name} 
-                        checked={this.state.checkedItems.get(item.name)}
-                        onChange={this.handleChange} />
-                        {item.name}
-                      </label>
-                  ))
-              }
+            Catégorie
+            {this.createCheckboxes()}
             </div>
         )
     }
 }
-
 
 export default CheckboxContainerCategorie;
 

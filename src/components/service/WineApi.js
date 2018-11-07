@@ -8,6 +8,13 @@ const WineApi = {
           resolve(res.data)
         })
       })
+    },
+    getWineFiltered(wine, filter) {
+      return new Promise(resolve => {
+        axios.get(Constants.PRODUCTS_URL).then(res => {
+          resolve(res.data)
+        })
+      })
     }
 }
 

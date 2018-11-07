@@ -1,41 +1,22 @@
-import React, { Component} from 'react';
-import { connect } from 'react-redux';
-import wine from '../../assets/fdv2017.json';
+import React from 'react';
+import Photo from '../../assets/vin.jpg';
+import './Card.scss';
 
-
-class WineCard extends Component{
-        state={
-            listWine:[],
-            counterOfCard:0
-        }
-
-        componentDidMount(){
-            let arrayWine = [];
-            wine.forEach(wineElement => {
-                arrayWine.push(wineElement);
-            });
-            let sizeArrayWine= arrayWine.length;
-            this.setState({
-                listWine: arrayWine,
-                counterOfCard: sizeArrayWine
-            })
-            
-        }
-    
-
-    render(){
-        return(
-            <div className="card">
-                
+const WineCard =({wine}) =>(
+        <div className="card">
+            <div className="wineCtn">
+                <div className="infoWine">
+                    <h4 className="wineDomain"><b>{wine.domain}</b></h4> 
+                    <p>{wine.appelation}</p> 
+                    <p>{wine.millesime}</p> 
+                </div>
+                <div className="winePrice">
+                    <p>{wine.price_vp_bundle} €</p>
+                </div>
             </div>
-        )
-    }
-}
+            <img className="imgWine" src={Photo} alt="photo"  />
+        </div>
+    
+)
 
-const mapStateToProps = state =>{
-    return{
-         listOfWine: state.counter
-    };
-};
-
-export default connect(mapStateToProps)(WineCard);
+export default WineCard;
